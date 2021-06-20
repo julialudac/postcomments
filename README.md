@@ -20,5 +20,5 @@ But there is a better way:
 ```yarn start```
 
 ## Start the client-side
-The client's entry point is *client/src/main.js*. To launch it, go into directory *client/src* and launch
+The client's entry point is *client/src/main.js*. To launch it, go into directory *client* and launch
 ```yarn serve```

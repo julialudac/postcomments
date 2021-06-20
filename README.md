@@ -22,3 +22,20 @@ But there is a better way:
 ## Start the client-side
 The client's entry point is *client/src/main.js*. To launch it, go into directory *client* and launch
 ```yarn serve```
+
+# Starting the app the "Docker" way
+
+## Prerequisites
+* Have Docker installed
+
+## Start the database, the server-side and the client-side
+docker-compose takes care of all of that!
+```docker-compose up```
+And when you are done with the program:
+```docker-compose down```
+
+## Some details about a docker containers struggle: CORS
+The initial plan is to not export the server-side to port 5000 but use its name *server* so that the client-side can communicate with through their common docker network, just like the server communicates with the database. Unfortunately, I didn't manage to, even by doing all my possible to deal with the CORS policy. Nonetheless it's possible to do curl requests to the server from any container on the network, so I thought it can be Vue that isn't allowing CORS (thought about it too but the problem is still here). Things I tried:
+* allow CORS on server side
+* allow CORS on Vue with the file *vue.config.js* as stated in the docs
+* use a plugin o the browser to disable CORS policy (*CORS everywhere* on Firefox)

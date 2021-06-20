@@ -1,0 +1,24 @@
+services:
+    mongodb:
+      image: mongo  
+      volumes:
+       - data:/app  
+    server:  
+      image: node:12-alpine
+      command: sh -c "yarn install && yarn devdocker"
+      ports:
+          - 5000:5000
+      working_dir: /app  
+      volumes:
+          - ./:/app
+    client:
+      image: node:12-alpine
+      command: sh -c "yarn install && yarn serve"  
+      ports:
+          - 8080:8080
+      working_dir: /app  
+      volumes:
+          - ./client:/app
+  
+volumes:
+  data:

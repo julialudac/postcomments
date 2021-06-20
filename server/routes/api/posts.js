@@ -30,9 +30,9 @@ router.delete('/:id', async(req, res) => {
 
 
 async function loadPostCollection() {
-  const client = await mongodb.MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true} );
+  const config = require("../../config.js");
+  const client = await mongodb.MongoClient.connect(config.config.MONGODB_ENDPOINT, {useUnifiedTopology: true} );
   return client.db('vue_express').collection('posts'); //
-
 }
 
 module.exports = router;
